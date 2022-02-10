@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     //variable
     Rigidbody2D playerRB;
     public Camera mCam;
-    public GameObject flashlight;
+    public Rigidbody2D flashlight;
     private Vector2 velocity;
-    private Vector2 lookPos;
+    private Vector3 lookPos;
     private Vector2 groundDetection;
     private Vector2 spawnPos; 
     private Vector2 levelLimit;
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float groundDetectionDistance = .1f;
     private float speed = 10f;
     private float jumpHeight = 5f;
+    public float angle = 0;
 
     void Start()
     {
@@ -27,15 +28,20 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        //flashlight
-        Vector3 lightLocation = lookPos - flashlight.transform.rotation;
-        //https://bitbucket.org/Vespper/grappling-hook/src/master/Grappling%20Gun
-
-        //camera follow
+        //follow
         mCam.transform.position = new Vector3 (transform.position.x, transform.position.y, -10);
+        flashlight.gameObject.transform.position = transform.position;
 
         //look position
         lookPos = Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position;
+
+        //flashlight
+        angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        flashlight.rotation = angle - 90;
+        lookPos.Normalize();
+
+        //camera follow
+        mCam.transform.position = new Vector3 (transform.position.x, transform.position.y, -10);
 
         //player movemnet
         velocity = playerRB.velocity;
