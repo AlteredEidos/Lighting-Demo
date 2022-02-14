@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         spawnPos = transform.position;
-        levelLimit = new Vector2 (0, -5);
+        levelLimit = new Vector2 (0, -1);
     }
     
     void Update()

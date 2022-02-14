@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Flashlight
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1253656215
+    locked: 0
+  - name: Lava
+    uniqueID: 606814005
+    locked: 0
+  - name: Platforms
+    uniqueID: 1655709899
     locked: 0
