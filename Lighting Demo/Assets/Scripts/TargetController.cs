@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
     private SpriteRenderer color;
+    private bool flashlight = false;
     public Color lit;
     public Color unLit;
 
@@ -16,8 +17,8 @@ public class TargetController : MonoBehaviour
     }
 
     void Update()
-    {       
-            color.color = unLit;
+    { 
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,9 +28,14 @@ public class TargetController : MonoBehaviour
             color.color = lit;
             Debug.Log("Lit");
         }
-        else if (collision.tag == "Flashlight")
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Flashlight")
         {
             color.color = unLit;
+            Debug.Log("unLit");
         }
     }
 }

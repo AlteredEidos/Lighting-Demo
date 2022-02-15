@@ -36,8 +36,11 @@ public class PlayerController : MonoBehaviour
         lookPos = Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position;
 
         //flashlight
+        // follow mouse point
         angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        //rotation of the light
         flashlight.rotation = angle - 90;
+        //normalize the vector
         lookPos.Normalize();
 
         //camera follow
